@@ -1,0 +1,16 @@
+language: objective-c
+osx_image: xcode8.3
+before_install:
+- brew update
+- brew outdated carthage || brew upgrade carthage
+script:
+- ./build.sh mixpanel/mixpanel-iphone Mixpanel
+deploy:
+  provider: releases
+  api_key:
+    secure: OB/BVamySqs3EzFO4MFVtVR6C2ayvQkTEyy/MQFn418KhJ2z/VbHSOIdypS3WMQt3eh00oKbNiqUiaiJuw1Z6e8L0AuMAiQLcTzQQyP/7h/pOFvZbhfVmh+AUOtuwOdWQKo+lwAmR5Za8qPj8USNrMQAVSCohTVd83k1f/TJDZLKb3e3O1ScXR4NkPa/r1TJZPvCeO7LazsQ10rwxnVTWjMXQ5wROf79xJbBczkb+ivififqrbyRSgqyHBP4taq1CGqCLQlQTjPvTLq1VcRx+wUigZFpnKVdAbd2uRhurPYQJGVghHPUH5k98jlz0gWAP3QyjvJj+MU2MJw/0mg3jp1XdgfFQRJq0RB5gRLKD2GhPdcXzCBofHKGunaCTeTebhtCGABeIJ6u6jlLv8JVZBjAkhd1RG7wTKXedK572Kmi4S8ueF2IT8ATn49hLWmKESr9emh3W6hUgT2Qeleci4itDpUpnR2x+uR26pTxWMarkSzm2Kzf+01V7wJYsreZ4eFQZ5Mc9cEibcPtmjZ6qSghpzysxdovXnlXs8DubculccR5auGxhsRUczhbs7RVUk3KKDwK9oGEzS2GdRi/JZO5BROo0PzhUnUDmisx5Y/YzPPE1UdNAmvAEx+cRhZDE9PJCcfdUtoscHaiBl7kBZL+0rTi473eLrLyXzmgU+U=
+  file_glob: true
+  file: Archives/*
+  skip_cleanup: true
+  on:
+    tags: true
